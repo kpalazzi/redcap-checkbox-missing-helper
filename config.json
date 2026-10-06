@@ -1,0 +1,31 @@
+{
+    "name": "Checkbox Missing Helper",
+    "namespace": "HMRI\\CheckboxMissing",
+    "description": "Add <code><b>@CHECKBOXMISSING</b></code> action tag to checkbox fields to automatically create and maintain a companion <code>fieldname_missing</code> calculation field. This new field equals <code>1</code> when all options are unchecked, and <code>0</code> otherwise. Reference it in branching logic, data quality rules, alerts, and reports as <code>[fieldname_missing]=1</code>.",
+    "documentation": "README.md",
+    "authors": [
+        {
+            "name": "Kerrin Palazzi",
+            "email": "kerrin.palazzi@hmri.org.au",
+            "institution": "Hunter Medical Research Institute"
+        }
+    ],
+    "framework-version": 16,
+    "project-settings": [
+        {
+            "key": "companion-suffix",
+            "name": "<b>Companion field suffix</b><br>The suffix appended to the checkbox field name to create the companion calculation field name. Must start with an underscore and contain only lowercase letters, numbers, and underscores. Changing this after companion fields have already been created will cause the old fields to be orphaned - they will still exist and you can still use them, however new versions will be created with the new suffix, and old versions will not be updated if response options change (recommendation - delete old companion fields manually).<br><i>Default: _missing</i>",
+            "required": false,
+            "type": "text"
+        }
+    ],
+    "action-tags": [
+        {
+            "tag": "@CHECKBOXMISSING",
+            "description": "Place in a <b>checkbox</b> field to automatically create and maintain a companion <code>fieldname_missing</code> calc field on the same instrument. The companion field equals <code>1</code> when all options are unchecked (i.e. the field is missing), and <code>0</code> when at least one option is checked. Reference it elsewhere as <code>[fieldname_missing]=1</code> in branching logic, data quality rules, alerts, and reports. The calculation logic is automatically updated if checkbox options are added or removed, and the companion field is renamed if the checkbox field is renamed."
+        }
+    ],
+    "compatibility": {
+        "redcap-version-min": "14.6.4"
+    }
+}
